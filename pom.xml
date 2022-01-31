@@ -25,7 +25,7 @@
     <modules>
         <module>core</module>
         <module>ui.apps</module>
-
+        <module>ui.content</module>
     </modules>
 
     <properties>
@@ -478,7 +478,7 @@
             <dependency>
                 <groupId>com.adobe.aem</groupId>
                 <artifactId>uber-jar</artifactId>
-                <version>6.3.0</version>
+                <version>6.4.0</version>
                 <classifier>apis</classifier>
                 <scope>provided</scope>
             </dependency>
@@ -520,6 +520,12 @@
                 <groupId>com.day.cq.wcm</groupId>
                 <artifactId>cq-wcm-taglib</artifactId>
                 <version>5.7.4</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.day.cq</groupId>
+                <artifactId>cq-search</artifactId>
+                <version>5.6.4</version>
                 <scope>provided</scope>
             </dependency>
 
