@@ -16,6 +16,19 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====================================================================== -->
+    <!-- D I S T R I B U T I O N   M A N G E M E N T -->
+    <!-- ====================================================================== -->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub IgorIvanovGrodno Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/IgorIvanovGrodno/Hero</url>
+        </repository>
+    </distributionManagement>
+
+
     <groupId>Hero</groupId>
     <artifactId>Hero</artifactId>
     <packaging>pom</packaging>
