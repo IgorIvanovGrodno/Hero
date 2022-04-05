@@ -45,11 +45,13 @@ public class MyJcrEventListener implements EventListener {
             this.session = slingRepository.loginService("subMyTestUser", null);
 
             if (session != null) {
-                session.getWorkspace().getObservationManager().addEventListener(this, Event.PROPERTY_ADDED,
-                        "/content/Hero/en",
-                        true,
-                        null,
-                        null,
+                session.getWorkspace().getObservationManager().addEventListener(
+                        this,                           //handler
+                        Event.PROPERTY_ADDED,                      //event type
+                        "/content/Hero/en/jcr:content",            //path
+                        false,                                     //is Deep?
+                        null,                                      //UUIDs filter
+                        null,                                      //nodetypes filter
                         false);
 //                session.save();
             }
@@ -62,7 +64,16 @@ public class MyJcrEventListener implements EventListener {
 
     @Override
     public void onEvent(EventIterator eventIterator) {
-        LOGGER.info("My JCR observation");
+        try {
+            while (eventIterator.hasNext()) {
+                Event event = eventIterator.nextEvent();
+                if (event != null) {
+                    LOGGER.info("My JCR observation ID: " + event.getIdentifier() + " path: " + event.getPath());
+                }
+            }
+        } catch (RepositoryException e) {
+            e.printStackTrace();
+        }
     }
 
     @Deactivate

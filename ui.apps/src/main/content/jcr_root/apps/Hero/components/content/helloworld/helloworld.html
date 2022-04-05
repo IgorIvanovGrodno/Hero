@@ -17,8 +17,9 @@
 <sly data-sly-use.templ="/apps/Hero/components/content/helloworld/testtemplate.html" />
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
      data-sly-call="${clientlib.all @ categories=['Hero.helloworld']}"/>
-<sly data-sly-use.ratingModel="com.hero.core.models.RatingModel" />
-<sly data-sly-use.heroAwareConfModel="com.hero.core.models.HeroAwareConfModel" />
+<!--<sly data-sly-use.ratingModel="com.hero.core.models.RatingModel" />-->
+<!--<sly data-sly-use.locModel="com.hero.core.models.LocaleMessageModel" />-->
+<!--<sly data-sly-use.heroAwareConfModel="com.hero.core.models.HeroAwareConfModel" />-->
 <p data-sly-test="${properties.text}">Text property: ${properties.text}</p>
 
 <pre data-sly-use.hello="com.hero.core.models.HelloWorldModel">
@@ -50,18 +51,19 @@ ${hello.text}
 </section>
 <section>
     <p>${'Page' @ i18n, locale='ru-RU'}</p>
+    <p>${"Hello world! {0}" @ i18n, format=['Ihar'], context='html'}</p>
+<!--/*<!--    <p>${locModel.val}</p>-->*/-->
 </section>
 <section>
     <h3>Rating model</h3>
-    <p>${ratingModel.rating}</p>
-    <a href="${heroAwareConfModel.externalLink}" >External Link</a>
+<!--/*<!--    <p>${ratingModel.rating}</p>-->*/-->
+<!--/*<!--    <a href="${heroAwareConfModel.externalLink}" >External Link</a>-->*/-->
     <a href="http://localhost:4502/content/haha.html" >Test html link checker</a>
 </section>
 <section>
     <h3>Context Aware configuration</h3>
 <!--/*    <p>${heroAwareConfModel.siteLocale}</p>*/-->
     <p>${caconfig['com.hero.core.config.HeroConfig'].siteLocale}</p>
-    <p>${heroAwareConfModel.siteLocale}</p>
+<!--/*<!--    <p>${heroAwareConfModel.siteLocale}</p>-->*/-->
 </section>
-
 

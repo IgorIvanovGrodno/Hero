@@ -14,7 +14,7 @@ import javax.servlet.Servlet;
 import java.io.IOException;
 
 @Component( service = Servlet.class,
-         property = {"sling.servlet.paths=" + "/bin/wkf" })
+         property = {"sling.servlet.paths=" + "/content/we-retail/us/en/exxx" })
 public class HeroSlingServlet extends SlingAllMethodsServlet {
 
     private static final long serialVersionUID = 1L;

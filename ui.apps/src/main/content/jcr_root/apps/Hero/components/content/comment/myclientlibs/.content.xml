@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="cq:ClientLibraryFolder"
+    allowProxy="true"
+    categories="[Hero.helloworld]"
+    embed="[cq.ckeditor, cq.social.hbs.voting, cq.social.hbs.journal, cq.social.hbs.signup, cq.social.hbs.breadcrumbs, personalization.core.kernel, personalization.clientcontext.kernel, personalization.stores.kernel, personalization.kernel, cq.social.hbs.journal_sidebar]"
+    dependencies="[Hero.testdep]"/>
