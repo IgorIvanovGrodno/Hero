@@ -1,8 +1,12 @@
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
      data-sly-call="${clientlib.css @ categories= 'grid.lib'}" />
+<sly data-sly-use.ratingModel="com.hero.core.models.RatingModel" />
 
 <div class="d-table">
     <div class="d-tr">
+        <div>
+            <p>${ratingModel.rating}</p>
+        </div>
         <div class="d-td">
             <img data-sly-use.image="com.hero.core.models.ImageModel" src="${image.imagePath}" alt="Hero" width="100px"/>
         </div>

@@ -3,7 +3,7 @@
     jcr:description="Template with focus on content."
     jcr:primaryType="cq:Template"
     jcr:title="Hero Content Page"
-    allowedPaths="[/content/Hero/.+]"
+    allowedPaths="[/content/.+/]"
     ranking="{Long}100">
     <jcr:content
         jcr:primaryType="cq:PageContent"

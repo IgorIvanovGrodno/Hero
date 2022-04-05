@@ -11,11 +11,17 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <text
+<!--                    <text-->
+<!--                        jcr:primaryType="nt:unstructured"-->
+<!--                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"-->
+<!--                        fieldLabel="Text"-->
+<!--                        name="./text"/>-->
+                    <colorpicker
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Text"
-                        name="./text"/>
+                        sling:resourceType="Hero/components/widgets"
+                        fieldLabel="dialog.title"
+                        header="my test header"
+                        name="./colorpicker"/>
                 </items>
             </column>
         </items>

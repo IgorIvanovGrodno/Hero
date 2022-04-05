@@ -35,7 +35,11 @@ public class LinkModel {
 
     @PostConstruct
     protected void init() {
-        absoluteURL = externalizer.externalLink(resource.getResourceResolver(), Externalizer.LOCAL, linkURL)+".html";
+        if (externalizer != null) {
+            absoluteURL = externalizer.externalLink(resource.getResourceResolver(), Externalizer.LOCAL, linkURL) + ".html";
+        } else {
+            absoluteURL = "/hero/url";
+        }
     }
 
     public String getAbsoluteURL() {
