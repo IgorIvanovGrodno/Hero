@@ -37,7 +37,7 @@ public class DemoAuthHandler extends DefaultAuthenticationFeedbackHandler implem
     public ResourceResolverFactory rrFactory;
     /**
      * Demo Authentication Handler gets the username j_username and password j_password from the request parameters to retrieve user credentials.
-     * This logs the user into the session. Otherwise return a null authInfo object.
+     * This logs dfdfdf the user into the session. Otherwise return a null authInfo object.
      */
     public AuthenticationInfo extractCredentials(HttpServletRequest request, HttpServletResponse response) {
         String j_username = request.getParameter("j_username");
