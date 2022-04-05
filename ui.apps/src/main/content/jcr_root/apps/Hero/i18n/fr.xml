@@ -8,4 +8,18 @@
         jcr:primaryType="nt:folder"
         sling:key="&amp;copy; {0} Hero Site. All rights reserved."
         sling:message="&amp;copy; {0} Hero Site. Tous droits réservés."/>
+    <greetings
+            jcr:mixinTypes="[sling:Message]"
+            jcr:primaryType="nt:folder"
+            sling:key="Hello world! {0}"
+            sling:message="Bonjour le monde! {0}"/>
+    <java
+            jcr:mixinTypes="[sling:Message]"
+            jcr:primaryType="nt:folder"
+            sling:key="Java"
+            sling:message="FrJava"/>
+    <dialog.title
+            jcr:mixinTypes="[sling:Message]"
+            jcr:primaryType="nt:folder"
+            sling:message="Titre"/>
 </jcr:root>
