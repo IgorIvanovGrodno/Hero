@@ -9,6 +9,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.event.EventAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,10 @@ import javax.jcr.UnsupportedRepositoryOperationException;
 import javax.jcr.observation.Event;
 import javax.jcr.observation.EventIterator;
 import javax.jcr.observation.EventListener;
+import javax.jcr.observation.ObservationManager;
+import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 
@@ -26,6 +30,10 @@ import java.util.Map;
 public class MyJcrEventListener implements EventListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyJcrEventListener.class);
     private Session session;
+
+    @Reference
+    private EventAdmin eventAdmin;
+
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
 
@@ -50,13 +58,11 @@ public class MyJcrEventListener implements EventListener {
                         Event.PROPERTY_ADDED,                      //event type
                         "/content/Hero/en/jcr:content",            //path
                         false,                                     //is Deep?
-                        null,                                      //UUIDs filter
-                        null,                                      //nodetypes filter
+                        null,                                   //UUIDs filter
+                        null,                                  //nodetypes filter
                         false);
 //                session.save();
             }
-        } catch (UnsupportedRepositoryOperationException e) {
-            e.printStackTrace();
         } catch (RepositoryException e) {
             e.printStackTrace();
         }
@@ -74,12 +80,36 @@ public class MyJcrEventListener implements EventListener {
         } catch (RepositoryException e) {
             e.printStackTrace();
         }
+
+        Dictionary properties = new Hashtable();
+        properties.put("title", "title");
+        properties.put("path", "/some/path");
+        org.osgi.service.event.Event event = new org.osgi.service.event.Event("com/hero", properties);
+        if (event != null) {
+        eventAdmin.postEvent(event);
+    }
+
     }
 
     @Deactivate
     public void deactivate() {
-        if (session != null) {
-            session.logout();
+        try {
+            // Get JCR ObservationManager from Workspace
+            final ObservationManager observationManager = session.getWorkspace().getObservationManager();
+
+            if (observationManager != null) {
+                // Un-register event handler
+                observationManager.removeEventListener(this);
+            }
+        } catch (UnsupportedRepositoryOperationException e) {
+            e.printStackTrace();
+        } catch (RepositoryException e) {
+            e.printStackTrace();
+        } finally {
+            // Good housekeeping; Close your JCR Session when you are done w them!
+            if (session != null) {
+                session.logout();
+            }
         }
     }
 }
