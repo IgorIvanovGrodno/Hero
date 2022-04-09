@@ -315,6 +315,23 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>github</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                </repository>
+                <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/IgorIvanovGrodno/Hero</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+
         <!-- ====================================================== -->
         <!-- A D O B E   P U B L I C   P R O F I L E                -->
         <!-- ====================================================== -->
