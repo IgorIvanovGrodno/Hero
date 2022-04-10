@@ -27,7 +27,7 @@ public class WorkflowServlet extends SlingAllMethodsServlet {
             WorkflowData workflowData = workflowSession.newWorkflowData("JCR_PATH","/content/Hero/fr");
             WorkflowModel workflowModel = null;
             try {
-                workflowModel = workflowSession.getModel("/var/workflow/models/test-model0");
+                workflowModel = workflowSession.getModel("/var/workflow/models/test-2-model");
                 workflowSession.startWorkflow(workflowModel, workflowData);
                 workflowStatus = "Workflow is executing...";
             } catch (WorkflowException e) {
