@@ -24,10 +24,10 @@ public class WorkflowServlet extends SlingAllMethodsServlet {
         ResourceResolver resourceResolver = request.getResourceResolver();
         WorkflowSession workflowSession = resourceResolver.adaptTo(WorkflowSession.class);
         if (workflowSession != null) {
-            WorkflowData workflowData = workflowSession.newWorkflowData("JCR_PATH","/content/Hero/fr");
+            WorkflowData workflowData = workflowSession.newWorkflowData("JCR_PATH","/content/Hero/new-workflow-page-2");
             WorkflowModel workflowModel = null;
             try {
-                workflowModel = workflowSession.getModel("/var/workflow/models/test-2-model");
+                workflowModel = workflowSession.getModel("/var/workflow/models/aem-new-author-model");
                 workflowSession.startWorkflow(workflowModel, workflowData);
                 workflowStatus = "Workflow is executing...";
             } catch (WorkflowException e) {

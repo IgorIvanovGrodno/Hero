@@ -74,6 +74,13 @@ public class MyJcrEventListener implements EventListener {
                 if (event != null) {
                     LOGGER.info("My JCR observation ID: " + event.getIdentifier() + " path: " + event.getPath());
                 }
+                String fullEventPath = event.getPath();
+                String path = fullEventPath.substring(0, fullEventPath.lastIndexOf('/'));
+                if (session.nodeExists("/content/Hero/backup" + path.substring(path.lastIndexOf('/')))) {
+                    session.removeItem("/content/Hero/backup" + path.substring(path.lastIndexOf('/')));
+                    session.save();
+                }
+                session.getWorkspace().copy(path, "/content/Hero/backup" + path.substring(path.lastIndexOf('/')));
             }
         } catch (RepositoryException e) {
             e.printStackTrace();
